@@ -6,6 +6,7 @@
 
 QT       += core gui charts
 
+INCLUDEPATH += /usr/lib/gcc/x86_64-linux-gnu/9/include
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Fitts
@@ -25,19 +26,32 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    controller/fittscontroller.cpp \
         main.cpp \
     View/fittsview.cpp \
     Controller/fittscontroller.cpp \
     Model/fittsmodel.cpp \
-    View/graphicwidget.cpp
+    View/graphicwidget.cpp \
+    model/fittsmodel.cpp \
+    view/fittsview.cpp \
+    view/graphicwidget.cpp
 
 HEADERS += \
     View/fittsview.h \
     Controller/fittscontroller.h \
     Model/fittsmodel.h \
-    View/graphicwidget.h
+    View/graphicwidget.h \
+    controller/fittscontroller.h \
+    model/fittsmodel.h \
+    view/fittsview.h \
+    view/graphicwidget.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    LICENSE \
+    README.md \
+    doc/rapport_Fitts_.pdf
