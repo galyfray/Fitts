@@ -1,5 +1,5 @@
 #include "fittsmodel.h"
-#include "../View/fittsview.h"
+#include "../view/fittsview.h"
 
 FittsModel::FittsModel() {
     this->fittsView = new FittsView(this);

@@ -1,6 +1,6 @@
 #include "fittscontroller.h"
-#include "../View/fittsview.h"
-#include "../Model/fittsmodel.h"
+#include "../view/fittsview.h"
+#include "../model/fittsmodel.h"
 
 #include <QApplication>
 #include <QDebug>

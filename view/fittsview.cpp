@@ -1,7 +1,7 @@
-#include "FittsView.h"
+#include "fittsview.h"
 #include "graphicwidget.h"
-#include "../Controller/fittscontroller.h"
-#include "../Model/fittsmodel.h"
+#include "../controller/fittscontroller.h"
+#include "../model/fittsmodel.h"
 
 #include <QWidget>
 #include <QHBoxLayout>

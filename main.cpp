@@ -1,4 +1,4 @@
-#include "Model/fittsmodel.h"
+#include "model/fittsmodel.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

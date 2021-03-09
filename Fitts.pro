@@ -27,20 +27,12 @@ CONFIG += c++11
 
 SOURCES += \
     controller/fittscontroller.cpp \
-        main.cpp \
-    View/fittsview.cpp \
-    Controller/fittscontroller.cpp \
-    Model/fittsmodel.cpp \
-    View/graphicwidget.cpp \
+    main.cpp \
     model/fittsmodel.cpp \
     view/fittsview.cpp \
     view/graphicwidget.cpp
 
 HEADERS += \
-    View/fittsview.h \
-    Controller/fittscontroller.h \
-    Model/fittsmodel.h \
-    View/graphicwidget.h \
     controller/fittscontroller.h \
     model/fittsmodel.h \
     view/fittsview.h \
