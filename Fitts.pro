@@ -29,12 +29,14 @@ SOURCES += \
     controller/fittscontroller.cpp \
     main.cpp \
     model/fittsmodel.cpp \
+    model/model.cpp \
     view/fittsview.cpp \
     view/graphicwidget.cpp
 
 HEADERS += \
     controller/fittscontroller.h \
     model/fittsmodel.h \
+    model/model.h \
     view/fittsview.h \
     view/graphicwidget.h
 
