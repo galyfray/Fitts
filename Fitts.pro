@@ -26,6 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    controller/controller.cpp \
     controller/fittscontroller.cpp \
     main.cpp \
     model/fittsmodel.cpp \
@@ -34,6 +35,7 @@ SOURCES += \
     view/graphicwidget.cpp
 
 HEADERS += \
+    controller/controller.h \
     controller/fittscontroller.h \
     model/fittsmodel.h \
     model/model.h \

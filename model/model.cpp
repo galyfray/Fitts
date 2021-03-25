@@ -5,37 +5,77 @@
 
 model::model(QObject *parent) : QObject(parent){}
 
-void model::onCircleClick(int x, int y){
-    QPoint point = QPoint(x,y);
+void model::onCircleClick(QPointF point){
 
     if(this->circleCenters.isEmpty()) {
         // Si vide alors premier click, on demarre le timer
         this->timer = new QElapsedTimer;
         timer->start();
-        this->clickPoints.append(point);
-    }else if (sqrt(pow(point.x() - this->circleCenters.last().x(),2) + pow(point.y() - this->circleCenters.last().y(),2)) <= this->circleSizes.last() / 2){
-
+    }else{
+        this->times.append(this->timer->elapsed());
+        this->timer->restart();
     }
+
+    this->clickPoints.append(point);
+    this->nextTarget();
+}
+
+void model::nextTarget() {
+
+    if(this->circlesLeft == 0){
+        this->endTest();
+        return;
+    }
+
+    int size = qrand() % ((this->maxSize + 1) - this->minSize) + this->minSize;
+
+    int sceneW = 0;
+    int sceneH = 0;
+
+    qreal x = qrand() % ((sceneW - size) - size) + size;
+    qreal y = qrand() % ((sceneH - size) - size) + size;
+
+    QPointF center = QPointF(x,y);
+
+    this->circleSizes.append(size);
+    this->circleCenters.append(center);
+
+    //TODO maj x,y pour prendre taille cercle
+    //ajouter appelle a drawCircle.
+
+    this->circlesLeft--;
     /*
-     * if(this->fittsModel->cercleCenter.isEmpty()) {
+     if(!this->fittsModel->cercleCenter.isEmpty())
+        this->fittsModel->cibleLeft--;
+    this->fittsView->updateTestMsg();
 
+    QGraphicsScene *scene = this->fittsView->scene;
+    scene->clear();
 
-        // On démarre avec la première cible
-        this->fittsModel->clickPoints.append(QPoint(x,y));
-        this->nextCible();
+    // On stop si c'est finis
+    if(this->fittsModel->cibleLeft == 0) {
+        this->finish();
+        return;
     }
-    else {
-        QPointF coords = this->fittsView->graphicView->mapToScene(x,y);
-        if(sqrt(pow(coords.x() - this->fittsModel->cercleCenter.last().x(),2) + pow(coords.y() - this->fittsModel->cercleCenter.last().y(),2)) <= this->fittsModel->cercleSize.last() / 2) {
-            // On stock le temps de click
-            this->fittsModel->times.append(timer->elapsed());
-            // On restart le chrono
-            timer->restart();
 
-            // On stock la position du click
-            this->fittsModel->clickPoints.append(QPoint(x,y));
-            this->nextCible();
-        }
-    }
+    // On génère la taille du cercle rouge
+    // qrand() % ((high + 1) - low) + low;
+    int size = qrand() % ((this->fittsModel->maxSize + 1) - this->fittsModel->minSize) + this->fittsModel->minSize;
+    // Car on veut le rayon
+    // On place le cercle dans la scene (Attention faut pas qu'il soit en dehors du cadre)
+    int sceneW = int(this->fittsView->scene->width());
+    int sceneH = int(this->fittsView->scene->height());
+
+    qreal posX = qrand() % ((sceneW - size) - size) + size;
+    qreal posY = qrand() % ((sceneH - size) - size) + size;
+
+    // On stock les infos sur le cercle
+    this->fittsModel->cercleCenter.append(QPoint(int(posX),int(posY)));
+    this->fittsModel->cercleSize.append(size);
+
+    // On place le cercle
+    scene->addEllipse(posX - (size / 2), posY - (size / 2), size, size, QPen(QColor("red")),QBrush(QColor("red")));
      */
 }
+
+void model::endTest(){}

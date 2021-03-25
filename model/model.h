@@ -11,15 +11,22 @@ public:
     explicit model(QObject *parent = nullptr);
 
 private:
-    QList<QPoint> clickPoints;
-    QList<QPoint> circleCenters;
+    QList<QPointF> clickPoints;
+    QList<QPointF> circleCenters;
     QList<int> circleSizes;
     QList<qint64> times;
 
+    int circlesLeft;
+    int minSize;
+    int maxSize;
+
+
     QElapsedTimer *timer;
 
-public slots:
-    void onCircleClick(int x,int y);
+public:
+    void onCircleClick(QPointF point);
+    void nextTarget();
+    void endTest();
 };
 
 #endif // MODEL_H
