@@ -96,6 +96,9 @@ void MainWindow::updateTestMsg(model *mod) {
     ui->nbciblesr->setText("" + QString::number(mod->getCirclesLeft()));
 }
 
+void MainWindow::drawCircle(QPoint center,int size){
+    scene->addEllipse(center.x() - (size / 2), center.y() - (size / 2), size, size, QPen(QColor("red")),QBrush(QColor("red")));
+}
 /*
 FittsView::FittsView(FittsModel *fittsModel) : QMainWindow() {
     this->fittsModel = fittsModel;
@@ -106,12 +109,8 @@ FittsView::FittsView(FittsModel *fittsModel) : QMainWindow() {
 
 
 
-void drawCircle (center, size, sceneW, sceneH)
-{
-    qreal posX = qrand() % ((sceneW - size) - size) + size;
-    qreal posY = qrand() % ((sceneH - size) - size) + size;
-    scene->addEllipse(posX - (size / 2), posY - (size / 2), size, size, QPen(QColor("red")),QBrush(QColor("red")));
-}
+
+
 
 
 
