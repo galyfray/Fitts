@@ -28,7 +28,7 @@ public:
     QGraphicsScene *scene;
     Ui::MainWindow *ui;
 
-    void initWindows(controller *control);
+    void initWindows(controller *control, model *mod);
     void updateTestMsg(model *mod);
 
     int getTestSceneHeight();

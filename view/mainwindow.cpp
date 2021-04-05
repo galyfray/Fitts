@@ -23,6 +23,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    scene = new QGraphicsScene;
+    ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
+    ui->graphicsView->setScene(scene);
+    scene->setSceneRect(0,0,ui->graphicsView->width(),300);
+
 }
 
 
@@ -81,14 +86,8 @@ void MainWindow::initWindows(controller *control, model *mod) {
     connect(ui->groupBox_3->findChild<QSpinBox *>("TailleMini"),SIGNAL(valueChanged(int)),control,SLOT(onMinSizeChange(int)));
     connect(ui->groupBox_3->findChild<QSpinBox *>("TailleMaxi"),SIGNAL(valueChanged(int)),control,SLOT(onMaxSizeChange(int)));
 
-
     ui->graphicsView->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-    scene = new QGraphicsScene;
-    ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
-    ui->graphicsView->setScene(scene);
-    scene->setSceneRect(0,0,ui->graphicsView->width(),300);
 
 }
 
