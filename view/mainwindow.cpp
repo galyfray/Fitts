@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "../controller/controller.h"
 
 #include <QWidget>
 #include <QHBoxLayout>
@@ -20,18 +21,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->NbCible->setValue(10);
-    ui->NbCible->setMaximum(100);
 
-    ui->TailleMini->setMaximum(1000);
-    ui->TailleMini->setValue(10);
-
-    ui->TailleMaxi->setMaximum(1000);
-    ui->TailleMaxi->setValue(10);
-
-    ui->spinBoxA->setValue(10);
-    ui->spinBoxB->setValue(10);
 }
+
 
 MainWindow::~MainWindow()
 {
@@ -56,7 +48,38 @@ int MainWindow::getTestSceneHeight()
     return sceneH;
 }
 
-void MainWindow::initWindows() {
+void MainWindow::initWindows(controller *control) {
+
+    ui->NbCible->setValue(10);
+    ui->NbCible->setMaximum(100);
+
+    ui->TailleMini->setMaximum(1000);
+    ui->TailleMini->setValue(10);
+
+    ui->TailleMaxi->setMaximum(1000);
+    ui->TailleMaxi->setValue(10);
+
+    ui->spinBoxA->setValue(10);
+    ui->spinBoxB->setValue(10);
+
+    //connect(leaveBtn,SIGNAL(clicked()),fittsController,SLOT(quit()));
+    //connect(startBtn,SIGNAL(clicked()),fittsController,SLOT(startSimulation()));
+
+    //connect(backBtn,SIGNAL(clicked()),fittsController,SLOT(backToSettings()));
+    //connect(resultBtn,SIGNAL(clicked()),control,SLOT(resultClicked()));
+
+    //connect(resultLeaveBtn,SIGNAL(clicked()),fittsController,SLOT(quit()));
+    //connect(restartBtn,SIGNAL(clicked()),fittsController,SLOT(backToSettings()));
+
+    connect(ui->graphicsView, SIGNAL(mouseClicked(int,int)), control, SLOT(onClick(int,int)));
+
+    // SpinBox values update
+    connect(ui->spinBoxA,SIGNAL(valueChanged(double)),control,SLOT(onAChange(double)));
+    connect(ui->spinBoxB,SIGNAL(valueChanged(double)),control,SLOT(onBChange(double)));
+    connect(ui->NbCible,SIGNAL(valueChanged(int)),control,SLOT(onNbCibleChange(int)));
+    connect(ui->TailleMini,SIGNAL(valueChanged(int)),control,SLOT(onMinSizeChange(int)));
+    connect(ui->TailleMaxi,SIGNAL(valueChanged(int)),control,SLOT(onMaxSizeChange(int)));
+
 
     ui->graphicsView->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -67,10 +90,10 @@ void MainWindow::initWindows() {
     scene->setSceneRect(0,0,ui->graphicsView->width(),300);
 
 }
-/*
+
 void MainWindow::updateTestMsg() {
     ui->nbciblesr->setText("<strong>Le test commencera après avoir appuyé sur la cible bleu.</strong> Nombre de cibles restantes : " + QString::number(this->model->cibleLeft));
-}*/
+}
 
 /*
 FittsView::FittsView(FittsModel *fittsModel) : QMainWindow() {
@@ -78,27 +101,7 @@ FittsView::FittsView(FittsModel *fittsModel) : QMainWindow() {
 
     this->initWindows();
     this->fittsController = new FittsController(this, this->fittsModel);
-
-    // Btn clicked
-    connect(leaveBtn,SIGNAL(clicked()),fittsController,SLOT(quit()));
-    connect(startBtn,SIGNAL(clicked()),fittsController,SLOT(startSimulation()));
-
-    connect(backBtn,SIGNAL(clicked()),fittsController,SLOT(backToSettings()));
-    connect(resultBtn,SIGNAL(clicked()),fittsController,SLOT(resultClicked()));
-
-    connect(resultLeaveBtn,SIGNAL(clicked()),fittsController,SLOT(quit()));
-    connect(restartBtn,SIGNAL(clicked()),fittsController,SLOT(backToSettings()));
-
-    connect(graphicView, SIGNAL(mouseClicked(int,int)), fittsController, SLOT(cibleClicked(int,int)));
-
-    // SpinBox values update
-    connect(aValue,SIGNAL(valueChanged(double)),fittsController,SLOT(aValueChanged(double)));
-    connect(bValue,SIGNAL(valueChanged(double)),fittsController,SLOT(bValueChanged(double)));
-    connect(nbCible,SIGNAL(valueChanged(int)),fittsController,SLOT(nbCibleChanged(int)));
-    connect(minSize,SIGNAL(valueChanged(int)),fittsController,SLOT(minSizeChanged(int)));
-    connect(maxSize,SIGNAL(valueChanged(int)),fittsController,SLOT(maxSizeChanged(int)));
 }
-
 
 
 

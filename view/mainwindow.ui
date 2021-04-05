@@ -10,6 +10,12 @@
     <height>840</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -48,6 +54,9 @@
     </widget>
    </widget>
    <widget class="QWidget" name="settingwidget" native="true">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>1050</x>
@@ -55,6 +64,15 @@
       <width>301</width>
       <height>791</height>
      </rect>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
     </property>
     <widget class="QGroupBox" name="groupBox_2">
      <property name="geometry">

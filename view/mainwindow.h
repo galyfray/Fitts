@@ -10,6 +10,7 @@
 #include <QLabel>
 #include <QLineSeries>
 #include <QtCharts>
+#include "../controller/controller.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -22,17 +23,18 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    QGraphicsScene *scene;
 
 private slots:
     void on_actionQuitter_triggered();
+
 
 private:
     Ui::MainWindow *ui;
     int getTestSceneHeight();
     int getTestSceneWidth();
-    void initWindows();
+    void initWindows(controller *control);
     void updateTestMsg();
-    QGraphicsScene *scene;
 
 };
 #endif // MAINWINDOW_H
