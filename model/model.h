@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QElapsedTimer>
+#include <QPointF>
 
 class model : public QObject
 {
@@ -16,17 +17,26 @@ private:
     QList<int> circleSizes;
     QList<qint64> times;
 
+    QElapsedTimer *timer;
+
     int circlesLeft;
+
+public:
+
+    double a;
+    double b;
+
+    int nbCircles;
     int minSize;
     int maxSize;
 
-
-    QElapsedTimer *timer;
-
-public:
     void onCircleClick(QPointF point);
     void nextTarget();
     void endTest();
+    void resetTest();
+
+    int getCirclesLeft();
+
 };
 
 #endif // MODEL_H

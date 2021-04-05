@@ -79,3 +79,17 @@ void model::nextTarget() {
 }
 
 void model::endTest(){}
+
+int model::getCirclesLeft(){
+    return this->circlesLeft;
+}
+
+void model::resetTest(){
+    this->circleSizes.clear();
+    this->circleCenters.clear();
+    this->clickPoints.clear();
+    this->times.clear();
+    this->timer->invalidate();
+
+    this->circlesLeft = this->nbCircles;
+}
