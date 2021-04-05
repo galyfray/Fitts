@@ -49,13 +49,19 @@ int MainWindow::getTestSceneHeight()
     return sceneH;
 }
 
-void MainWindow::initWindows(controller *control) {
+void MainWindow::initWindows(controller *control, model *mod) {
 
+    ui->groupBox_3->findChild<QSpinBox *>("NbCible")->setValue(mod->nbCircles);
     ui->groupBox_3->findChild<QSpinBox *>("NbCible")->setMaximum(100);
 
     ui->groupBox_3->findChild<QSpinBox *>("TailleMini")->setMaximum(1000);
+    ui->groupBox_3->findChild<QSpinBox *>("TailleMini")->setValue(mod->minSize);
 
     ui->groupBox_3->findChild<QSpinBox *>("TailleMaxi")->setMaximum(1000);
+    ui->groupBox_3->findChild<QSpinBox *>("TailleMaxi")->setValue(mod->maxSize);
+
+    ui->spinBoxA->setValue(mod->a);
+    ui->spinBoxB->setValue(mod->b);
 
     //connect(leaveBtn,SIGNAL(clicked()),fittsController,SLOT(quit()));
     //connect(startBtn,SIGNAL(clicked()),fittsController,SLOT(startSimulation()));
@@ -93,21 +99,6 @@ void MainWindow::updateTestMsg(model *mod) {
 void MainWindow::drawCircle(QPoint center,int size){
     scene->addEllipse(center.x() - (size / 2), center.y() - (size / 2), size, size, QPen(QColor("red")),QBrush(QColor("red")));
 }
-/*
-FittsView::FittsView(FittsModel *fittsModel) : QMainWindow() {
-    this->fittsModel = fittsModel;
 
-    this->initWindows();
-    this->fittsController = new FittsController(this, this->fittsModel);
-}
-
-
-
-
-
-
-
-
-*/
 
 
