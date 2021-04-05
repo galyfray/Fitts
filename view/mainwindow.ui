@@ -92,26 +92,6 @@
      <property name="title">
       <string>Choix de A et B </string>
      </property>
-     <widget class="QSpinBox" name="spinBoxA">
-      <property name="geometry">
-       <rect>
-        <x>90</x>
-        <y>40</y>
-        <width>42</width>
-        <height>22</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBoxB">
-      <property name="geometry">
-       <rect>
-        <x>90</x>
-        <y>80</y>
-        <width>42</width>
-        <height>22</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QLabel" name="labelA">
       <property name="geometry">
        <rect>
@@ -136,6 +116,26 @@
       </property>
       <property name="text">
        <string>B</string>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="spinBoxA">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>40</y>
+        <width>62</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="spinBoxB">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>80</y>
+        <width>62</width>
+        <height>22</height>
+       </rect>
       </property>
      </widget>
     </widget>
