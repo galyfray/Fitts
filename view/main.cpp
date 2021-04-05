@@ -8,9 +8,17 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow win;
+
     model mod(&win);
+
+
     controller ctrl(&mod,&win);
-    win.initWindows(&ctrl);
+
+    win.initWindows(&ctrl,&mod);
+
+    mod.init();
+
     win.show();
+
     return a.exec();
 }

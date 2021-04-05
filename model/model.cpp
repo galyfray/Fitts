@@ -106,5 +106,19 @@ bool model::isInLastCircle(QPointF point){
 }
 
 void model::init(){
+    this->a = 10;
+    this->b = 10;
 
+    this->maxSize = 150;
+    this->minSize = 20;
+
+    this->nbCircles = 10;
+    this->circlesLeft = 10;
+
+    this->view->drawCircle(QPoint(
+                               this->view->getTestSceneWidth()/2,
+                               this->view->getTestSceneHeight()/2
+                               ),
+                           this->maxSize
+                           );
 }
