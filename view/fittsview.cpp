@@ -229,3 +229,4 @@ void FittsView::displayResults() {
     this->erreurType->setText(QString::number(this->fittsModel->erreurType));
     this->itc95->setText(QString::number(this->fittsModel->itc95));
 }
+

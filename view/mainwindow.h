@@ -39,5 +39,9 @@ public:
 private slots:
     void on_actionQuitter_triggered();
 
+
+private:
+
+
 };
 #endif // MAINWINDOW_H
