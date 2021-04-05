@@ -9,6 +9,7 @@
 #ifndef UI_MAINWINDOW_H
 #define UI_MAINWINDOW_H
 
+#include "graphicwidget.h"
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
@@ -32,7 +33,7 @@ public:
     QAction *actionQuitter;
     QWidget *centralwidget;
     QWidget *MainWidget;
-    QGraphicsView *graphicsView;
+    GraphicWidget *graphicsView;
     QWidget *settingwidget;
     QGroupBox *groupBox_2;
     QSpinBox *spinBoxA;
@@ -69,7 +70,7 @@ public:
         MainWidget = new QWidget(centralwidget);
         MainWidget->setObjectName(QString::fromUtf8("MainWidget"));
         MainWidget->setGeometry(QRect(0, 0, 1051, 801));
-        graphicsView = new QGraphicsView(MainWidget);
+        graphicsView = new GraphicWidget();
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
         graphicsView->setGeometry(QRect(0, 0, 1051, 751));
         settingwidget = new QWidget(centralwidget);
