@@ -2,6 +2,14 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPushButton>
+#include <QSpinBox>
+#include <QDoubleSpinBox>
+#include <QStackedLayout>
+#include <QGraphicsView>
+#include <QLabel>
+#include <QLineSeries>
+#include <QtCharts>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,8 +25,14 @@ public:
 
 private slots:
     void on_actionQuitter_triggered();
+    QGraphicsScene *scene;
 
 private:
     Ui::MainWindow *ui;
+    int getTestSceneHeight();
+    int getTestSceneWidth();
+    void initWindows();
+    void updateTestMsg();
+
 };
 #endif // MAINWINDOW_H

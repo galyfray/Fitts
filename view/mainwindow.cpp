@@ -20,6 +20,19 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    ui->NbCible->setValue(10);
+    ui->NbCible->setMaximum(100);
+
+    ui->TailleMini->setMaximum(1000);
+    ui->TailleMini->setValue(10);
+
+    ui->TailleMaxi->setMaximum(1000);
+    ui->TailleMaxi->setValue(10);
+
+    ui->spinBoxA->setValue(10);
+    ui->spinBoxB->setValue(10);
+
 }
 
 MainWindow::~MainWindow()
@@ -30,6 +43,35 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionQuitter_triggered()
 {
     QApplication :: quit();
+}
+
+int MainWindow::getTestSceneWidth()
+{
+    int sceneW = int(this->ui->graphicsView->width());
+    return sceneW;
+}
+
+
+int MainWindow::getTestSceneHeight()
+{
+    int sceneH = int(this->ui->graphicsView->height());
+    return sceneH;
+}
+
+void MainWindow::initWindows() {
+
+    ui->graphicsView->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff);
+    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    scene = new QGraphicsScene;
+    ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
+    ui->graphicsView->setScene(scene);
+    scene->setSceneRect(0,0,ui->graphicsView->width(),300);
+
+}
+
+void MainWindow::updateTestMsg() {
+    ui->nbciblesr->setText("<strong>Le test commencera après avoir appuyé sur la cible bleu.</strong> Nombre de cibles restantes : " + QString::number(this->model->cibleLeft));
 }
 
 /*
@@ -60,18 +102,6 @@ FittsView::FittsView(FittsModel *fittsModel) : QMainWindow() {
 }
 
 
-int getTestSceneWidth()
-{
-    int sceneW = int(this->fittsView->scene->width());
-    return sceneW;
-}
-
-
-int getTestSceneHeight()
-{
-    int sceneH = int(this->fittsView->scene->height());
-    return sceneH;
-}
 
 
 void drawCircle (center, size, sceneW, sceneH)
@@ -81,33 +111,7 @@ void drawCircle (center, size, sceneW, sceneH)
     scene->addEllipse(posX - (size / 2), posY - (size / 2), size, size, QPen(QColor("red")),QBrush(QColor("red")));
 }
 
-void FittsView::initWindows() {
 
-    graphicsView->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff);
-    graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-    scene = new QGraphicsScene;
-    graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
-    graphicsView->setScene(scene);
-    scene->setSceneRect(0,0,graphicView->width(),300);
-
-    nbCible->setValue(this->fittsModel->nbCible);
-    nbCible->setMaximum(100);
-
-    minSize->setMaximum(1000);
-    minSize->setValue(this->fittsModel->minSize);
-
-    maxSize->setMaximum(1000);
-    maxSize->setValue(this->fittsModel->maxSize);
-
-    aValue->setValue(this->fittsModel->a);
-    bValue->setValue(this->fittsModel->b);
-
-}
-
-void FittsView::updateTestMsg() {
-    this->nbciblesr->setText("<strong>Le test commencera après avoir appuyé sur la cible bleu.</strong> Nombre de cibles restantes : " + QString::number(this->fittsModel->cibleLeft));
-}
 
 */
 
