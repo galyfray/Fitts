@@ -51,14 +51,14 @@ int MainWindow::getTestSceneHeight()
 
 void MainWindow::initWindows(controller *control) {
 
-    ui->groupBox_3->NbCible->setValue(10);
-    ui->groupBox_3->NbCible->setMaximum(100);
+    ui->groupBox_3->findChild<QSpinBox *>("NbCible")->setValue(10);
+    ui->groupBox_3->findChild<QSpinBox *>("NbCible")->setMaximum(100);
 
-    ui->groupBox_3->TailleMini->setMaximum(1000);
-    ui->groupBox_3->TailleMini->setValue(10);
+    ui->groupBox_3->findChild<QSpinBox *>("TailleMini")->setMaximum(1000);
+    ui->groupBox_3->findChild<QSpinBox *>("TailleMini")->setValue(10);
 
-    ui->groupBox_3->TailleMaxi->setMaximum(1000);
-    ui->groupBox_3->TailleMaxi->setValue(10);
+    ui->groupBox_3->findChild<QSpinBox *>("TailleMaxi")->setMaximum(1000);
+    ui->groupBox_3->findChild<QSpinBox *>("TailleMaxi")->setValue(10);
 
     ui->spinBoxA->setValue(10);
     ui->spinBoxB->setValue(10);
@@ -77,9 +77,9 @@ void MainWindow::initWindows(controller *control) {
     // SpinBox values update
     connect(ui->spinBoxA,SIGNAL(valueChanged(double)),control,SLOT(onAChange(double)));
     connect(ui->spinBoxB,SIGNAL(valueChanged(double)),control,SLOT(onBChange(double)));
-    connect(ui->groupBox_3->NbCible,SIGNAL(valueChanged(int)),control,SLOT(onNbCibleChange(int)));
-    connect(ui->groupBox_3->TailleMini,SIGNAL(valueChanged(int)),control,SLOT(onMinSizeChange(int)));
-    connect(ui->groupBox_3->TailleMaxi,SIGNAL(valueChanged(int)),control,SLOT(onMaxSizeChange(int)));
+    connect(ui->groupBox_3->findChild<QSpinBox *>("NbCible"),SIGNAL(valueChanged(int)),control,SLOT(onNbCibleChange(int)));
+    connect(ui->groupBox_3->findChild<QSpinBox *>("TailleMini"),SIGNAL(valueChanged(int)),control,SLOT(onMinSizeChange(int)));
+    connect(ui->groupBox_3->findChild<QSpinBox *>("TailleMaxi"),SIGNAL(valueChanged(int)),control,SLOT(onMaxSizeChange(int)));
 
 
     ui->graphicsView->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff);
