@@ -94,13 +94,13 @@ public:
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         groupBox_3->setGeometry(QRect(0, 210, 291, 501));
         NbCible = new QSpinBox(groupBox_3);
-        NbCible->setObjectName(QString::fromUtf8("spinBox"));
+        NbCible->setObjectName(QString::fromUtf8("NbCible"));
         NbCible->setGeometry(QRect(170, 50, 42, 22));
         TailleMini = new QSpinBox(groupBox_3);
-        TailleMini->setObjectName(QString::fromUtf8("spinBox_2"));
+        TailleMini->setObjectName(QString::fromUtf8("TailleMini"));
         TailleMini->setGeometry(QRect(170, 90, 42, 22));
         TailleMaxi = new QSpinBox(groupBox_3);
-        TailleMaxi->setObjectName(QString::fromUtf8("spinBox_3"));
+        TailleMaxi->setObjectName(QString::fromUtf8("TailleMaxi"));
         TailleMaxi->setGeometry(QRect(170, 140, 42, 22));
         nbcibles = new QLabel(groupBox_3);
         nbcibles->setObjectName(QString::fromUtf8("nbcibles"));
