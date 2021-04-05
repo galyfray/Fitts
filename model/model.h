@@ -5,6 +5,8 @@
 #include <QElapsedTimer>
 #include <QPointF>
 
+class MainWindow;
+
 class model : public QObject
 {
     Q_OBJECT

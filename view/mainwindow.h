@@ -10,7 +10,8 @@
 #include <QLabel>
 #include <QLineSeries>
 #include <QtCharts>
-#include "../controller/controller.h"
+
+class controller;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,13 +25,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QGraphicsScene *scene;
+    Ui::MainWindow *ui;
 
 private slots:
     void on_actionQuitter_triggered();
 
 
 private:
-    Ui::MainWindow *ui;
     int getTestSceneHeight();
     int getTestSceneWidth();
     void initWindows(controller *control);

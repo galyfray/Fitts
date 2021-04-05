@@ -1,14 +1,17 @@
 #include "controller.h"
+#include "view/mainwindow.h"
+#include "view/ui_mainwindow.h"
 
-controller::controller(class model* pmodel){
+controller::controller(class model* pmodel,class MainWindow * view){
     this->pmodel = pmodel;
+    this->view = view;
 }
 
 void controller::onClick(int x, int y){
     //TODO implement
-
-    if(this->pmodel->isTestStarted() || this->pmodel->isInLastCircle(QPointF(x,y))){
-        this->pmodel->onCircleClick(QPointF(x,y));
+    QPointF p = this->view->ui->graphicsView->mapToScene(x,y);
+    if(this->pmodel->isTestStarted() || this->pmodel->isInLastCircle(p)){
+        this->pmodel->onCircleClick(p);
     }
 
     /*

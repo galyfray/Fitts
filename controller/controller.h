@@ -4,13 +4,16 @@
 #include <QObject>
 #include "model/model.h"
 
+class MainWindow;
+
 class controller : public QObject
 {
     Q_OBJECT
 private:
     model* pmodel;
+    MainWindow * view;
 public:
-    explicit controller(class model* model);
+    explicit controller(class model* model,class MainWindow * view);
 
 public slots:
     void onClick(int x, int y);
