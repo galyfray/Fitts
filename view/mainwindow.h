@@ -25,7 +25,6 @@ public:
 
 private slots:
     void on_actionQuitter_triggered();
-    QGraphicsScene *scene;
 
 private:
     Ui::MainWindow *ui;
@@ -33,6 +32,7 @@ private:
     int getTestSceneWidth();
     void initWindows();
     void updateTestMsg();
+    QGraphicsScene *scene;
 
 };
 #endif // MAINWINDOW_H

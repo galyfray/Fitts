@@ -20,7 +20,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     ui->NbCible->setValue(10);
     ui->NbCible->setMaximum(100);
 
@@ -32,7 +31,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->spinBoxA->setValue(10);
     ui->spinBoxB->setValue(10);
-
 }
 
 MainWindow::~MainWindow()
@@ -69,10 +67,10 @@ void MainWindow::initWindows() {
     scene->setSceneRect(0,0,ui->graphicsView->width(),300);
 
 }
-
+/*
 void MainWindow::updateTestMsg() {
     ui->nbciblesr->setText("<strong>Le test commencera après avoir appuyé sur la cible bleu.</strong> Nombre de cibles restantes : " + QString::number(this->model->cibleLeft));
-}
+}*/
 
 /*
 FittsView::FittsView(FittsModel *fittsModel) : QMainWindow() {
