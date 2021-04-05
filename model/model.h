@@ -11,7 +11,7 @@ class model : public QObject
 {
     Q_OBJECT
 public:
-    explicit model(QObject *parent = nullptr);
+    explicit model(class MainWindow * view);
 
 private:
     QList<QPointF> clickPoints;
@@ -36,8 +36,11 @@ public:
     int minSize;
     int maxSize;
 
+    MainWindow * view;
+
     void onCircleClick(QPointF point);
     void resetTest();
+    void init();
 
     int getCirclesLeft();
     bool isTestStarted();

@@ -27,13 +27,16 @@ public:
     QGraphicsScene *scene;
     Ui::MainWindow *ui;
 
+    int getTestSceneHeight();
+    int getTestSceneWidth();
+
+    void drawCircle(QPoint center,int size);
+
 private slots:
     void on_actionQuitter_triggered();
 
 
 private:
-    int getTestSceneHeight();
-    int getTestSceneWidth();
     void initWindows(controller *control);
     void updateTestMsg();
 

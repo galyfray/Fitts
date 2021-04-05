@@ -1,9 +1,12 @@
 #include "model.h"
+#include "view/mainwindow.h"
 #include <math.h>
 
 #include <QPoint>
 
-model::model(QObject *parent) : QObject(parent){}
+model::model(class MainWindow * view){
+    this->view = view;
+}
 
 void model::onCircleClick(QPointF point){
 
@@ -29,18 +32,18 @@ void model::nextTarget() {
 
     int size = qrand() % ((this->maxSize + 1) - this->minSize) + this->minSize;
 
-    int sceneW = 0;
-    int sceneH = 0;
+    int sceneW = this->view->getTestSceneWidth();
+    int sceneH = this->view->getTestSceneHeight();
 
     qreal x = qrand() % ((sceneW - size) - size) + size;
     qreal y = qrand() % ((sceneH - size) - size) + size;
 
-    QPointF center = QPointF(x,y);
+    QPoint center = QPoint((int)x,(int)y);
 
     this->circleSizes.append(size);
     this->circleCenters.append(center);
 
-    //TODO maj x,y pour prendre taille cercle
+    this->view->drawCircle(center,size);
     //ajouter appelle a drawCircle.
 
     this->circlesLeft--;
@@ -100,4 +103,8 @@ bool model::isTestStarted(){
 
 bool model::isInLastCircle(QPointF point){
     return sqrt(pow(point.x() - this->circleCenters.last().x(),2) + pow(point.y() - this->circleCenters.last().y(),2)) <= (this->circleSizes.last() / 2);
+}
+
+void model::init(){
+
 }

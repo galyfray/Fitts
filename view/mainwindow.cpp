@@ -116,4 +116,7 @@ void drawCircle (center, size, sceneW, sceneH)
 
 */
 
+void MainWindow::drawCircle(QPoint center,int size){
+    scene->addEllipse(center.x() - (size / 2), center.y() - (size / 2), size, size, QPen(QColor("red")),QBrush(QColor("red")));
+}
 
