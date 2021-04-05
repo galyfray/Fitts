@@ -36,8 +36,8 @@ public:
     GraphicWidget *graphicsView;
     QWidget *settingwidget;
     QGroupBox *groupBox_2;
-    QSpinBox *spinBoxA;
-    QSpinBox *spinBoxB;
+    QDoubleSpinBox *spinBoxA;
+    QDoubleSpinBox *spinBoxB;
     QLabel *labelA;
     QLabel *labelB;
     QGroupBox *groupBox_3;
@@ -79,10 +79,10 @@ public:
         groupBox_2 = new QGroupBox(settingwidget);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         groupBox_2->setGeometry(QRect(0, 20, 291, 121));
-        spinBoxA = new QSpinBox(groupBox_2);
+        spinBoxA = new QDoubleSpinBox(groupBox_2);
         spinBoxA->setObjectName(QString::fromUtf8("spinBoxA"));
         spinBoxA->setGeometry(QRect(90, 40, 42, 22));
-        spinBoxB = new QSpinBox(groupBox_2);
+        spinBoxB = new QDoubleSpinBox(groupBox_2);
         spinBoxB->setObjectName(QString::fromUtf8("spinBoxB"));
         spinBoxB->setGeometry(QRect(90, 80, 42, 22));
         labelA = new QLabel(groupBox_2);
