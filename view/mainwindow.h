@@ -10,8 +10,7 @@
 #include <QLabel>
 #include <QLineSeries>
 #include <QtCharts>
-
-class controller;
+#include "../controller/controller.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,20 +24,17 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QGraphicsScene *scene;
-    Ui::MainWindow *ui;
-
-    int getTestSceneHeight();
-    int getTestSceneWidth();
-
-    void drawCircle(QPoint center,int size);
 
 private slots:
     void on_actionQuitter_triggered();
 
 
 private:
+    Ui::MainWindow *ui;
+    int getTestSceneHeight();
+    int getTestSceneWidth();
     void initWindows(controller *control);
-    void updateTestMsg();
+    void updateTestMsg(model *mod);
 
 };
 #endif // MAINWINDOW_H

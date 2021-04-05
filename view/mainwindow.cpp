@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "../controller/controller.h"
+#include "../model/model.h"
 
 #include <QWidget>
 #include <QHBoxLayout>
@@ -91,8 +92,8 @@ void MainWindow::initWindows(controller *control) {
 
 }
 
-void MainWindow::updateTestMsg() {
-    ui->nbciblesr->setText("<strong>Le test commencera après avoir appuyé sur la cible bleu.</strong> Nombre de cibles restantes : " + QString::number(this->model->cibleLeft));
+void MainWindow::updateTestMsg(model *mod) {
+    ui->nbciblesr->setText("" + QString::number(mod->getCirclesLeft()));
 }
 
 /*
@@ -116,7 +117,4 @@ void drawCircle (center, size, sceneW, sceneH)
 
 */
 
-void MainWindow::drawCircle(QPoint center,int size){
-    scene->addEllipse(center.x() - (size / 2), center.y() - (size / 2), size, size, QPen(QColor("red")),QBrush(QColor("red")));
-}
 
