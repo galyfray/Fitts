@@ -29,6 +29,8 @@ public:
     Ui::MainWindow *ui;
 
     void initWindows(controller *control);
+    void updateTestMsg(model *mod);
+
     int getTestSceneHeight();
     int getTestSceneWidth();
 
@@ -36,10 +38,6 @@ public:
 
 private slots:
     void on_actionQuitter_triggered();
-
-
-private:
-    void updateTestMsg(model *mod);
 
 };
 #endif // MAINWINDOW_H
