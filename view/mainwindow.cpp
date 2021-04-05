@@ -75,8 +75,8 @@ void MainWindow::initWindows(controller *control) {
     connect(ui->graphicsView, SIGNAL(mouseClicked(int,int)), control, SLOT(onClick(int,int)));
 
     // SpinBox values update
-    connect(ui->spinBoxA,SIGNAL(valueChanged(int)),control,SLOT(onAChange(double)));
-    connect(ui->spinBoxB,SIGNAL(valueChanged(int)),control,SLOT(onBChange(double)));
+    connect(ui->spinBoxA,SIGNAL(valueChanged(double)),control,SLOT(onAChange(double)));
+    connect(ui->spinBoxB,SIGNAL(valueChanged(double)),control,SLOT(onBChange(double)));
     connect(ui->groupBox_3->findChild<QSpinBox *>("NbCible"),SIGNAL(valueChanged(int)),control,SLOT(onNbCibleChange(int)));
     connect(ui->groupBox_3->findChild<QSpinBox *>("TailleMini"),SIGNAL(valueChanged(int)),control,SLOT(onMinSizeChange(int)));
     connect(ui->groupBox_3->findChild<QSpinBox *>("TailleMaxi"),SIGNAL(valueChanged(int)),control,SLOT(onMaxSizeChange(int)));
