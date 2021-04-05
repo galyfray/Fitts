@@ -28,7 +28,6 @@ CONFIG += c++11
 SOURCES += \
     controller/controller.cpp \
     controller/fittscontroller.cpp \
-    main.cpp \
     model/fittsmodel.cpp \
     model/model.cpp \
     view/fittsview.cpp \
