@@ -28,6 +28,9 @@ public:
     QGraphicsScene *scene;
     Ui::MainWindow *ui;
 
+    void initWindows(controller *control);
+    void updateTestMsg(model *mod);
+
     int getTestSceneHeight();
     int getTestSceneWidth();
 
@@ -38,8 +41,7 @@ private slots:
 
 
 private:
-    void initWindows(controller *control);
-    void updateTestMsg(model *mod);
+
 
 };
 #endif // MAINWINDOW_H
