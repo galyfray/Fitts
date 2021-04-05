@@ -32,7 +32,9 @@ SOURCES += \
     model/fittsmodel.cpp \
     model/model.cpp \
     view/fittsview.cpp \
-    view/graphicwidget.cpp
+    view/main.cpp \
+    view/graphicwidget.cpp \
+    view/mainwindow.cpp
 
 HEADERS += \
     controller/controller.h \
@@ -40,7 +42,9 @@ HEADERS += \
     model/fittsmodel.h \
     model/model.h \
     view/fittsview.h \
-    view/graphicwidget.h
+    view/graphicwidget.h \
+    view/mainwindow.h \
+    view/ui_mainwindow.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -51,3 +55,6 @@ DISTFILES += \
     LICENSE \
     README.md \
     doc/rapport_Fitts_.pdf
+
+FORMS += \
+    view/mainwindow.ui
