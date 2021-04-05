@@ -43,14 +43,14 @@ void MainWindow::on_actionQuitter_triggered()
 
 int MainWindow::getTestSceneWidth()
 {
-    int sceneW = int(this->ui->graphicsView->width());
+    int sceneW = int(this->scene->width());
     return sceneW;
 }
 
 
 int MainWindow::getTestSceneHeight()
 {
-    int sceneH = int(this->ui->graphicsView->height());
+    int sceneH = int(this->scene->height());
     return sceneH;
 }
 
