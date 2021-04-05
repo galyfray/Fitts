@@ -51,17 +51,11 @@ int MainWindow::getTestSceneHeight()
 
 void MainWindow::initWindows(controller *control) {
 
-    ui->groupBox_3->findChild<QSpinBox *>("NbCible")->setValue(10);
     ui->groupBox_3->findChild<QSpinBox *>("NbCible")->setMaximum(100);
 
     ui->groupBox_3->findChild<QSpinBox *>("TailleMini")->setMaximum(1000);
-    ui->groupBox_3->findChild<QSpinBox *>("TailleMini")->setValue(10);
 
     ui->groupBox_3->findChild<QSpinBox *>("TailleMaxi")->setMaximum(1000);
-    ui->groupBox_3->findChild<QSpinBox *>("TailleMaxi")->setValue(10);
-
-    ui->spinBoxA->setValue(10);
-    ui->spinBoxB->setValue(10);
 
     //connect(leaveBtn,SIGNAL(clicked()),fittsController,SLOT(quit()));
     //connect(startBtn,SIGNAL(clicked()),fittsController,SLOT(startSimulation()));
