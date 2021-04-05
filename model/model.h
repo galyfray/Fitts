@@ -19,6 +19,10 @@ private:
 
     QElapsedTimer *timer;
 
+
+    void nextTarget();
+    void endTest();
+
     int circlesLeft;
 
 public:
@@ -31,11 +35,11 @@ public:
     int maxSize;
 
     void onCircleClick(QPointF point);
-    void nextTarget();
-    void endTest();
     void resetTest();
 
     int getCirclesLeft();
+    bool isTestStarted();
+    bool isInLastCircle(QPointF point);
 
 };
 

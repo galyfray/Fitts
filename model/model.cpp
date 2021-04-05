@@ -93,3 +93,11 @@ void model::resetTest(){
 
     this->circlesLeft = this->nbCircles;
 }
+
+bool model::isTestStarted(){
+    return !this->circleCenters.isEmpty();
+}
+
+bool model::isInLastCircle(QPointF point){
+    return sqrt(pow(point.x() - this->circleCenters.last().x(),2) + pow(point.y() - this->circleCenters.last().y(),2)) <= (this->circleSizes.last() / 2);
+}
