@@ -36,6 +36,12 @@ public:
 
     void drawCircle(QPoint center,int size);
 
+    QSpinBox * getNbCibleSpin();
+    QSpinBox * getTailleMinSpin();
+    QSpinBox * getTailleMaxSpin();
+    QSpinBox * getASpin();
+    QSpinBox * getBSpin();
+
 private slots:
     void on_actionQuitter_triggered();
 

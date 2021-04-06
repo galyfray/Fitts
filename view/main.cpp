@@ -10,14 +10,11 @@ int main(int argc, char *argv[])
     MainWindow win;
 
     model mod(&win);
-
+    mod.init();
 
     controller ctrl(&mod,&win);
 
     win.initWindows(&ctrl,&mod);
-
-    mod.init();
-
     win.show();
 
     return a.exec();

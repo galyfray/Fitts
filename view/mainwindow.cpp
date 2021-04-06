@@ -58,11 +58,13 @@ void MainWindow::initWindows(controller *control, model *mod) {
     ui->groupBox_3->findChild<QSpinBox *>("NbCible")->setValue(mod->nbCircles);
     ui->groupBox_3->findChild<QSpinBox *>("NbCible")->setMaximum(100);
 
-    ui->groupBox_3->findChild<QSpinBox *>("TailleMini")->setMaximum(1000);
+    ui->groupBox_3->findChild<QSpinBox *>("TailleMini")->setMaximum(mod->maxSize);
     ui->groupBox_3->findChild<QSpinBox *>("TailleMini")->setValue(mod->minSize);
+    ui->groupBox_3->findChild<QSpinBox *>("TailleMini")->setMinimum(10);
 
     ui->groupBox_3->findChild<QSpinBox *>("TailleMaxi")->setMaximum(1000);
     ui->groupBox_3->findChild<QSpinBox *>("TailleMaxi")->setValue(mod->maxSize);
+    ui->groupBox_3->findChild<QSpinBox *>("TailleMini")->setMinimum(mod->minSize);
 
     ui->spinBoxA->setValue(mod->a);
     ui->spinBoxB->setValue(mod->b);
@@ -95,8 +97,26 @@ void MainWindow::updateTestMsg(model *mod) {
 }
 
 void MainWindow::drawCircle(QPoint center,int size){
+    scene->clear();
     scene->addEllipse(center.x() - (size / 2), center.y() - (size / 2), size, size, QPen(QColor("red")),QBrush(QColor("red")));
 }
 
+QSpinBox * MainWindow::getNbCibleSpin(){
+    return ui->groupBox_3->findChild<QSpinBox *>("NbCible");
+}
 
+QSpinBox * MainWindow::getTailleMinSpin(){
+    return ui->groupBox_3->findChild<QSpinBox *>("TailleMini");
+}
 
+QSpinBox * MainWindow::getTailleMaxSpin(){
+    return ui->groupBox_3->findChild<QSpinBox *>("TailleMaxi");
+}
+
+QSpinBox * MainWindow::getASpin(){
+    return ui->groupBox_3->findChild<QSpinBox *>("a");
+}
+
+QSpinBox * MainWindow::getBSpin(){
+    return ui->groupBox_3->findChild<QSpinBox *>("b");
+}
