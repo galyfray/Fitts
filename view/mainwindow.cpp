@@ -92,33 +92,6 @@ void MainWindow::initWindows(controller *control, model *mod) {
 
 }
 
-void MainWindow::PrintResults(QList<QPointF> theorique, QList<QPointF> exp)
-{
-
-   plot = new QChartView;
-   scene->addWidget(plot);
-
-   QChart *chart = new QChart;
-   this->plot->setChart(chart);
-   chart->setTitle("Temps d'éxecution en fonction de la distance");
-   chart->createDefaultAxes();
-   chart->legend()->setVisible(true);
-   chart->legend()->setAlignment(Qt::AlignBottom);
-
-    QLineSeries *expSeries = new QLineSeries;
-    expSeries->setName("Courbe expérimentale");
-    QLineSeries *fittsSeries = new QLineSeries;
-    fittsSeries->setName("Courbe théorique");
-    QCategoryAxis *axis=new QCategoryAxis;
-
-    expSeries->append(exp);
-    fittsSeries->append(theorique);
-
-    axis->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
-    chart->addSeries(expSeries);
-    chart->addSeries(fittsSeries);
-}
-
 void MainWindow::updateTestMsg(model *mod) {
     ui->nbciblesr->setText("" + QString::number(mod->getCirclesLeft()));
 }
@@ -146,4 +119,41 @@ QSpinBox * MainWindow::getASpin(){
 
 QSpinBox * MainWindow::getBSpin(){
     return ui->groupBox_3->findChild<QSpinBox *>("b");
+}
+
+void MainWindow::PrintResults(QList<QPointF> theorique, QList<QPointF> exp)
+{
+
+   plot = new QChartView;
+   scene->addWidget(plot);
+   scene->setSceneRect(0,0,0,0);
+   plot->setFixedSize(1000,750);
+   QChart *chart = new QChart;
+   this->plot->setChart(chart);
+   this->plot->setRenderHint(QPainter::Antialiasing);
+   chart->setTitle("Temps d'éxecution en fonction de la distance");
+   chart->createDefaultAxes();
+   chart->legend()->setVisible(true);
+   chart->legend()->setAlignment(Qt::AlignBottom);
+
+    QScatterSeries *expSeries = new QScatterSeries;
+    expSeries->setName("Courbe expérimentale");
+    QLineSeries *fittsSeries = new QLineSeries;
+    fittsSeries->setName("Courbe théorique");
+    QCategoryAxis *axis=new QCategoryAxis;
+
+    expSeries->append(exp);
+    fittsSeries->append(theorique);
+
+    axis->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
+    chart->addSeries(expSeries);
+    chart->addSeries(fittsSeries);
+    chart->addAxis(axis,Qt::AlignBottom);
+    expSeries->attachAxis(axis);
+    chart->addAxis(axis,Qt::AlignLeft);
+
+    QValueAxis *axisY = new QValueAxis;
+    axisY->setTitleText("temps (en ms)");
+    chart->addAxis(axisY,Qt::AlignLeft);
+    fittsSeries->attachAxis(axisY);
 }

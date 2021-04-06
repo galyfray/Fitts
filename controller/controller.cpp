@@ -45,7 +45,3 @@ void controller::onMaxSizeChange(int value){
     this->pmodel->maxSize = value;
     this->view->getTailleMinSpin()->setMaximum(value);
 }
-
-void controller::onReset(){
-    this->pmodel->resetTest();
-}

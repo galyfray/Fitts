@@ -26,6 +26,8 @@ void model::onCircleClick(QPointF point){
 
 void model::nextTarget() {
 
+    this->view->updateTestMsg(this);
+
     if(this->circlesLeft == 0){
         this->computeGraph();
         return;
@@ -45,41 +47,8 @@ void model::nextTarget() {
     this->circleCenters.append(center);
 
     this->view->drawCircle(center,size);
-    //ajouter appelle a drawCircle.
 
     this->circlesLeft--;
-    /*
-     if(!this->fittsModel->cercleCenter.isEmpty())
-        this->fittsModel->cibleLeft--;
-    this->fittsView->updateTestMsg();
-
-    QGraphicsScene *scene = this->fittsView->scene;
-    scene->clear();
-
-    // On stop si c'est finis
-    if(this->fittsModel->cibleLeft == 0) {
-        this->finish();
-        return;
-    }
-
-    // On génère la taille du cercle rouge
-    // qrand() % ((high + 1) - low) + low;
-    int size = qrand() % ((this->fittsModel->maxSize + 1) - this->fittsModel->minSize) + this->fittsModel->minSize;
-    // Car on veut le rayon
-    // On place le cercle dans la scene (Attention faut pas qu'il soit en dehors du cadre)
-    int sceneW = int(this->fittsView->scene->width());
-    int sceneH = int(this->fittsView->scene->height());
-
-    qreal posX = qrand() % ((sceneW - size) - size) + size;
-    qreal posY = qrand() % ((sceneH - size) - size) + size;
-
-    // On stock les infos sur le cercle
-    this->fittsModel->cercleCenter.append(QPoint(int(posX),int(posY)));
-    this->fittsModel->cercleSize.append(size);
-
-    // On place le cercle
-    scene->addEllipse(posX - (size / 2), posY - (size / 2), size, size, QPen(QColor("red")),QBrush(QColor("red")));
-     */
 }
 
 void model::computeGraph(){
@@ -98,29 +67,6 @@ void model::computeGraph(){
     }
 
     this->view->PrintResults(theoric,experimental);
-
-    /*
-    QLineSeries *expSeries = new QLineSeries;
-    expSeries->setName("Courbe expérimentale");
-    QLineSeries *fittsSeries = new QLineSeries;
-    fittsSeries->setName("Courbe théorique");
-    QCategoryAxis *axis = new QCategoryAxis;
-
-    QList<double> fittsValues;
-
-    for(int i = 0; i < this->fittsModel->nbCible; ++i) {
-        double T = this->fittsModel->times[i];
-        expSeries->append(i,T);
-        double D = sqrt(pow(this->fittsModel->clickPoints[i].x() - this->fittsModel->cercleCenter[i].x(),2) + pow(this->fittsModel->clickPoints[i].y() - this->fittsModel->cercleCenter[i].y(),2));
-
-        // On multiplie par 100 pour être en ms
-        double value = (this->fittsModel->a * 1000) + ((this->fittsModel->b * 1000) * log2((D / this->fittsModel->cercleSize[i]) + 1));
-        fittsValues.append(value);
-        fittsSeries->append(i,value);
-
-        axis->append(QString::number(i + 1) + "<br />T: "+QString::number(T)+"<br />D: " + QString::number(D),i);
-    }
-    */
 }
 
 int model::getCirclesLeft(){
