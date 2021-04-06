@@ -95,6 +95,13 @@ void model::resetTest(){
     this->timer->invalidate();
 
     this->circlesLeft = this->nbCircles;
+
+    this->view->drawCircle(QPoint(
+                               this->view->getTestSceneWidth()/2,
+                               this->view->getTestSceneHeight()/2
+                               ),
+                           this->maxSize
+                           );
 }
 
 bool model::isTestStarted(){

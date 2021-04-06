@@ -22,6 +22,7 @@ public slots:
     void onNbCibleChange(int value);
     void onMinSizeChange(int value);
     void onMaxSizeChange(int value);
+    void onReset();
 
 };
 
