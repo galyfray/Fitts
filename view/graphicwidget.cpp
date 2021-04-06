@@ -1,7 +1,7 @@
 #include "graphicwidget.h"
 #include <QGraphicsView>
 
-GraphicWidget::GraphicWidget() {
+GraphicWidget::GraphicWidget(QWidget *parent) : QGraphicsView(parent) {
 
 }
 

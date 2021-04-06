@@ -27,7 +27,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
     ui->graphicsView->setScene(scene);
     scene->setSceneRect(0,0,ui->graphicsView->width(),300);
-    scene->setBackgroundBrush(QBrush(QColor("red")));
 }
 
 

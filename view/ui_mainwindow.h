@@ -70,7 +70,7 @@ public:
         MainWidget = new QWidget(centralwidget);
         MainWidget->setObjectName(QString::fromUtf8("MainWidget"));
         MainWidget->setGeometry(QRect(0, 0, 1051, 801));
-        graphicsView = new GraphicWidget();
+        graphicsView = new GraphicWidget(centralwidget);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
         graphicsView->setGeometry(QRect(0, 0, 1051, 751));
         settingwidget = new QWidget(centralwidget);

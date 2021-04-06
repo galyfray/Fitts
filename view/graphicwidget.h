@@ -8,7 +8,7 @@ class GraphicWidget : public QGraphicsView
 {
     Q_OBJECT
 public:
-    GraphicWidget();
+    GraphicWidget(QWidget *parent = nullptr);
 signals:
     void mouseClicked(int,int);
 
