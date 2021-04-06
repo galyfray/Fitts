@@ -11,7 +11,7 @@
 #include <QSpinBox>
 #include <QDoubleSpinBox>
 #include <QPushButton>
-
+#include <QList>
 #include <QStackedLayout>
 #include <QGraphicsView>
 
@@ -90,6 +90,35 @@ void MainWindow::initWindows(controller *control, model *mod) {
     ui->graphicsView->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
+}
+
+void MainWindow::PrintResults(QList<QPoint> theorique, QList<QPoint> exp, model *mod)
+{
+
+   plot = new QChartView;
+   scene->addWidget(plot);
+
+   QChart *chart = new QChart;
+   this->plot->setChart(chart);
+   chart->setTitle("Temps d'éxecution en fonction de la distance");
+   chart->createDefaultAxes();
+   chart->legend()->setVisible(true);
+   chart->legend()->setAlignment(Qt::AlignBottom);
+
+    QLineSeries *expSeries = new QLineSeries;
+    expSeries->setName("Courbe expérimentale");
+    QLineSeries *fittsSeries = new QLineSeries;
+    fittsSeries->setName("Courbe théorique");
+    QCategoryAxis *axis=new QCategoryAxis;
+
+    for(int i=0; i<mod->nbCircles; i++){
+        expSeries->append(exp[i]);
+      //  axis->append(QString::number(i+1)+ "<br />T: "+QString::number(T)+"<br />D: "+QString::number(D),i);
+        fittsSeries->append(theorique[i]);
+    }
+    axis->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
+    chart->addSeries(expSeries);
+    chart->addSeries(fittsSeries);
 }
 
 void MainWindow::updateTestMsg(model *mod) {
