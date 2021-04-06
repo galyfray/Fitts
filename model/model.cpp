@@ -2,6 +2,7 @@
 #include "view/mainwindow.h"
 #include <math.h>
 
+#include <tgmath.h>
 #include <QPoint>
 
 model::model(class MainWindow * view){
@@ -26,7 +27,7 @@ void model::onCircleClick(QPointF point){
 void model::nextTarget() {
 
     if(this->circlesLeft == 0){
-        this->endTest();
+        this->computeGraph();
         return;
     }
 
@@ -81,7 +82,44 @@ void model::nextTarget() {
      */
 }
 
-void model::endTest(){}
+void model::computeGraph(){
+
+    QList<QPointF> experimental = QList<QPointF>() ,theoric = QList<QPointF>();
+
+    for(int i = 0; i < this->circleCenters.size(); ++i) {
+        qreal D = sqrt(pow(this->clickPoints[i].x() - this->circleCenters[i].x(),2) + pow(this->clickPoints[i].y() - this->circleCenters[i].y(),2));
+        qreal ID = log2( D/this->circleSizes[i] +1 );
+
+        QPointF e = QPointF(ID,this->times[i]),t = QPointF(ID,this->b*ID + this->a);
+
+        experimental.append(e);
+        theoric.append(t);
+
+    }
+
+    /*
+    QLineSeries *expSeries = new QLineSeries;
+    expSeries->setName("Courbe expérimentale");
+    QLineSeries *fittsSeries = new QLineSeries;
+    fittsSeries->setName("Courbe théorique");
+    QCategoryAxis *axis = new QCategoryAxis;
+
+    QList<double> fittsValues;
+
+    for(int i = 0; i < this->fittsModel->nbCible; ++i) {
+        double T = this->fittsModel->times[i];
+        expSeries->append(i,T);
+        double D = sqrt(pow(this->fittsModel->clickPoints[i].x() - this->fittsModel->cercleCenter[i].x(),2) + pow(this->fittsModel->clickPoints[i].y() - this->fittsModel->cercleCenter[i].y(),2));
+
+        // On multiplie par 100 pour être en ms
+        double value = (this->fittsModel->a * 1000) + ((this->fittsModel->b * 1000) * log2((D / this->fittsModel->cercleSize[i]) + 1));
+        fittsValues.append(value);
+        fittsSeries->append(i,value);
+
+        axis->append(QString::number(i + 1) + "<br />T: "+QString::number(T)+"<br />D: " + QString::number(D),i);
+    }
+    */
+}
 
 int model::getCirclesLeft(){
     return this->circlesLeft;

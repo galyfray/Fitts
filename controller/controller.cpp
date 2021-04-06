@@ -17,10 +17,16 @@ void controller::onClick(int x, int y){
 
 void controller::onAChange(double value){
     this->pmodel->a = value;
+    if(this->pmodel->getCirclesLeft() == 0){
+        this->pmodel->computeGraph();
+    }
 }
 
 void controller::onBChange(double value){
     this->pmodel->b = value;
+    if(this->pmodel->getCirclesLeft() == 0){
+        this->pmodel->computeGraph();
+    }
 }
 
 void controller::onNbCibleChange(int value){

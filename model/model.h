@@ -23,7 +23,6 @@ private:
 
 
     void nextTarget();
-    void endTest();
 
     int circlesLeft;
 
@@ -41,6 +40,7 @@ public:
     void onCircleClick(QPointF point);
     void resetTest();
     void init();
+    void computeGraph();
 
     int getCirclesLeft();
     bool isTestStarted();
