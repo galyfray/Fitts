@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "../controller/controller.h"
-#include "../model/model.h"
+#include "controller/controller.h"
+#include "model/model.h"
 
 #include <QWidget>
 #include <QHBoxLayout>
