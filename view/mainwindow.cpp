@@ -92,7 +92,7 @@ void MainWindow::initWindows(controller *control, model *mod) {
 
 }
 
-void MainWindow::PrintResults(QList<QPoint> theorique, QList<QPoint> exp, model *mod)
+void MainWindow::PrintResults(QList<QPointF> theorique, QList<QPointF> exp)
 {
 
    plot = new QChartView;
@@ -111,11 +111,9 @@ void MainWindow::PrintResults(QList<QPoint> theorique, QList<QPoint> exp, model 
     fittsSeries->setName("Courbe théorique");
     QCategoryAxis *axis=new QCategoryAxis;
 
-    for(int i=0; i<mod->nbCircles; i++){
-        expSeries->append(exp[i]);
-      //  axis->append(QString::number(i+1)+ "<br />T: "+QString::number(T)+"<br />D: "+QString::number(D),i);
-        fittsSeries->append(theorique[i]);
-    }
+    expSeries->append(exp);
+    fittsSeries->append(theorique);
+
     axis->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
     chart->addSeries(expSeries);
     chart->addSeries(fittsSeries);

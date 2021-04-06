@@ -97,6 +97,8 @@ void model::computeGraph(){
 
     }
 
+    this->view->PrintResults(theoric,experimental);
+
     /*
     QLineSeries *expSeries = new QLineSeries;
     expSeries->setName("Courbe expérimentale");

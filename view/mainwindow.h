@@ -37,7 +37,7 @@ public:
 
     void drawCircle(QPoint center,int size);
 
-    void PrintResults(QList<QPoint> theorique, QList<QPoint> exp, model *mod);
+    void PrintResults(QList<QPointF> theorique, QList<QPointF> exp);
     QSpinBox * getNbCibleSpin();
     QSpinBox * getTailleMinSpin();
     QSpinBox * getTailleMaxSpin();
