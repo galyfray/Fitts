@@ -27,6 +27,7 @@ public:
     ~MainWindow();
     QGraphicsScene *scene;
     Ui::MainWindow *ui;
+    QChartView *plot;
 
     void initWindows(controller *control, model *mod);
     void updateTestMsg(model *mod);
@@ -36,6 +37,7 @@ public:
 
     void drawCircle(QPoint center,int size);
 
+    void PrintResults(QList<QPoint> theorique, QList<QPoint> exp, model *mod);
     QSpinBox * getNbCibleSpin();
     QSpinBox * getTailleMinSpin();
     QSpinBox * getTailleMaxSpin();
