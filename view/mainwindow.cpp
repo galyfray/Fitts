@@ -23,10 +23,15 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+
     scene = new QGraphicsScene;
     ui->graphicsView->fitInView(scene->sceneRect(),Qt::KeepAspectRatio);
     ui->graphicsView->setScene(scene);
     scene->setSceneRect(0,0,ui->graphicsView->width(),300);
+
+    setFixedSize(1350,770);  //Fixe la taille de la fenêtre
+    setWindowTitle("Programme de test Fitts");
+
 }
 
 
@@ -57,6 +62,7 @@ void MainWindow::initWindows(controller *control, model *mod) {
 
     ui->groupBox_3->findChild<QSpinBox *>("NbCible")->setValue(mod->nbCircles);
     ui->groupBox_3->findChild<QSpinBox *>("NbCible")->setMaximum(100);
+    ui->groupBox_3->findChild<QSpinBox *>("NbCible")->setMinimum(1);
 
     ui->groupBox_3->findChild<QSpinBox *>("TailleMini")->setMaximum(mod->maxSize);
     ui->groupBox_3->findChild<QSpinBox *>("TailleMini")->setValue(mod->minSize);
@@ -64,7 +70,7 @@ void MainWindow::initWindows(controller *control, model *mod) {
 
     ui->groupBox_3->findChild<QSpinBox *>("TailleMaxi")->setMaximum(1000);
     ui->groupBox_3->findChild<QSpinBox *>("TailleMaxi")->setValue(mod->maxSize);
-    ui->groupBox_3->findChild<QSpinBox *>("TailleMini")->setMinimum(mod->minSize);
+    ui->groupBox_3->findChild<QSpinBox *>("TailleMaxi")->setMinimum(mod->minSize);
 
     ui->spinBoxA->setValue(mod->a);
     ui->spinBoxB->setValue(mod->b);
